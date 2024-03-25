@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body class="login-page">
+  <div class="container">
+    <div class="form-container">
+      <h1>Войти</h1><br>
+      <p>Пожалуйста, введите ваши учетные данные для входа.</p>
+        <form method="POST" action="/login">
+          <div class="data_block">
+            <input type="text" id="username" name="username" required placeholder="Имя пользователя" class="form-control special-input"><br>
+            <input type="password" id="password" name="password" required placeholder="Пароль" class="form-control special-input"><br>
+          </div>
+          <div class="send">
+            <input type="submit" value="Войти" class="btn btn-registration-login">
+          </div>
+        </form>
+        <p><a href="{{ url_for('reset_request') }}">Забыли пароль?</a></p>
+    </div>
+  </div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert-error">
+                    {{ message }}
+                </div>
+            {% elif category == 'info' %}
+                <div class="alert success-message">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="login_form reset_pass">
+    <form action="" method="POST">
+        {{ form_reset.hidden_tag() }}
+            <h2 class="border-bottom mb-4">Сбросить пароль</h2>
+
+            <div class="form-group">
+                {% if form_reset.email.errors %}
+                {{ form_reset.email(class='form-post-title is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for errors in form_reset.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form_reset.email(class='form-post-title', placeholder='email') }}
+                {% endif %}
+            </div>
+        <div class="form-group">
+            {{ form_reset.submit(class='btn_log_in', style="wфidth: auto; padding-right: 10px;") }}
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'warning' %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body class="feedback-page">
+  <div class="container">
+    <div class="form-container">
+      <h1>Обратная связь</h1><br>
+      <p>Здесь Вы можете задать интересующие Вас вопросы.</p>
+        <form method="POST" action="/feedback">
+          <div class="data_block">
+            <input type="text" id="name" name="name" required placeholder="Имя" class="form-control special-input"><br>
+            <input type="email" id="email" name="email" required placeholder="E-mail" class="form-control special-input"><br>
+          </div>
+          <div class="text_area">
+            <textarea rows="5" id="message" name="message" required placeholder="Напишите своё сообщение" class="form-control"></textarea><br>
+          </div>
+          <div class="send">
+            <input type="submit" value="ОТПРАВИТЬ" class="btn btn-feedback">
+          </div>
+        </form>
+    </div>
+  </div>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li class="success-message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+{% endblock %}

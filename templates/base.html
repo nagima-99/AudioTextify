@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/index_styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/registration_login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/faq_instruction.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/feedback_profile.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset_password.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='image/audio.png') }}" type="image/png">
+  {% block title -%}
+    {% if title %}
+      <title>Преобразование аудио в текст | {{title}}</title>
+    {% else %}
+      <title>Преобразование аудио в текст</title>
+    {% endif %}
+  {% endblock %}
+</head>
+<body>
+  <header class="header">
+    <a href="" class="logo">AudioTextify</a>
+    <nav class="navbar">
+      <ul class="menu-left">
+        <li><a href="/">Аудио в текст</a></li>
+        <li><a href="/instruction">Инструкция</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="/feedback">Обратная связь</a></li>
+        <li><a href="/user_profile">Профиль</a></li>
+        <li><a href="/logout" class="logout-link">Выйти</a></li>
+        {% else %}
+        <li><a href="/register" class="registration-link">Регистрация</a></li>
+        <li><a href="/login" class="login-link">Войти</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+{% block body %}
+{% endblock %}
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <a href="" class="logo">AudioTextify</a>
+            <p>Звуки становятся словами,<br>время остается вашим союзником.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Полезные ссылки</h3>
+            <ul>
+                <li><a href="/">Аудио в текст</a></li>
+                <li><a href="/instruction">Инструкция</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contacts">
+            <h3>Контакты</h3>
+            <p>Почта: <a href="mailto:textifyaudio@gmail.com">textifyaudio@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/77761682911">+7(776)168-29-11</a></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

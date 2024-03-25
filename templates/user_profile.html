@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="form-container">
+      <h1>Данные учетной записи</h1>
+      <form method="post" class="profile-form">
+        <div class="data_block">
+          <div>
+            <label for="username">Имя</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" class="special-input">
+          </div>
+          <div>
+            <label for="email">Адрес электронной почты</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" class="special-input">
+          </div>
+        </div>
+        <div>
+          <label for="current_password">Текущий пароль</label>
+          <input type="password" id="current_password" name="current_password" class="special-input">
+        </div>
+        <div>
+          <label for="new_password">Новый пароль</label>
+          <input type="password" id="new_password" name="new_password" class="special-input">
+        </div>
+        <div>
+          <label for="confirm_new_password">Повторите новый пароль</label>
+          <input type="password" id="confirm_new_password" name="confirm_new_password" class="special-input">
+        </div>
+        <button type="submit" class="btn-feedback">Обновить профиль</button>
+      </form>
+      <form method="post" action="{{ url_for('delete_account') }}" onsubmit="return confirm('Вы уверены, что хотите удалить свой аккаунт?');">
+        <button type="submit" class="btn btn-danger">Удалить аккаунт</button>
+      </form>
+    </div>
+  </div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock %}

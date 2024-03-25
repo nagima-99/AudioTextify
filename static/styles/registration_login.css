@@ -1,0 +1,51 @@
+.registration-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0073e6;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.registration-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.login-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7f00;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.login-link:hover {
+  background-color: #ff9933;
+  color: #fff;
+}
+
+.form-container {
+    width: 768px;
+    padding: 40px 60px 40px;
+    backdrop-filter: blur(3.4px);
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #18353E;
+}
+
+.btn-registration-login{
+    padding: 15px 50px;
+    font-size: 18px;
+    background-color: #1a5276;
+    color: #fff;
+    border: none;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.btn-registration-login:hover {
+    background-color: #0056b3;
+}

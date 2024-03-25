@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="body-container">
+    <h1>Преобразование аудио в текст</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="audio_file">Выберите аудиофайл:</label><br>
+        <input type="file" id="audio_file" name="file" accept=".wav"><br>
+        <label for="language">Выберите язык:</label>
+        <select id="language" name="language">
+            <option value="en-US">English (US)</option>
+            <option value="ru-RU">Русский</option>
+            <option value="fr-FR">Français (French)</option>
+            <option value="es-ES">Español (Spanish)</option>
+        </select><br>
+        <input type="submit" value="Распознать речь">
+    </form>
+    {% if error %}
+    <div class="error-message">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if transcript %}
+    <hr>
+    <h2>Транскрипция:</h2>
+    <textarea id="transcript-text">{{ transcript }}</textarea><br>
+    <a href="{{ url_for('download_transcript', transcript=transcript, format='txt') }}" download>Скачать в формате txt</a>
+    <a href="{{ url_for('download_transcript', transcript=transcript, format='docx') }}" download>Скачать в формате docx</a>
+
+    {% endif %}
+</div>
+{% endblock %}
